@@ -10,10 +10,12 @@ class Welcome extends React.Component{
 
     handleClick(e) {
         const { dispatch } = this.props;
-        dispatch({type:'TAKE_STEP', payload:{
-            step: 'Race',
-            componentType: 'pick'
-        } })
+        dispatch({type:'TAKE_STEP', payload: {
+            step: 'RACE',
+            componentType: 'PICK',
+            options: ['Human', 'Elf']
+            } 
+        });
     }
 
     render(){

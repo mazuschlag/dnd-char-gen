@@ -16,12 +16,8 @@ class CharacterGenerator extends React.Component{
         
         return(
             <div>
-              
                 
-
             </div>
-
-            
         );
     }
 }
