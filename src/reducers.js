@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import HomeReducer from './components/Home/homeReducer'
+import CharacterGeneratorReducer from './components/CharacterGenerator/CharacterGeneratorReducer'
+import AppReducer from './AppReducer.js';
 
 const rootReducer =  combineReducers({
-    home: HomeReducer
+    character: CharacterGeneratorReducer,
+    app: AppReducer
 });
 
 export default rootReducer;

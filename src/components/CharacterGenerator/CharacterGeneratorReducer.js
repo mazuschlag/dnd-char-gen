@@ -3,7 +3,7 @@ const initialState ={
     num: 0
 }
 
-export default function HomeReducer(store = initialState, action){
+export default function CharacterGenerator(store = initialState, action){
     const {type, payload} = action;
 
     switch(type){

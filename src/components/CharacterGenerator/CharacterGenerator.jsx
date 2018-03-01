@@ -2,31 +2,35 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Link } from 'react-router-dom';
 
-class HomeComponent extends React.Component{
+class CharacterGenerator extends React.Component{
     constructor(props){
         super(props);
-        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e) {
         const { dispatch } = this.props;
-        dispatch({type: 'ADD_ONE', payload: 1});
+        dispatch({type:'TAKE_STEP', payload:'ClassComponent' })
     }
 
     render(){
+        
         return(
             <div>
-                <button type="button" onClick={ this.handleClick }>Increase</button>
-                <p>{ this.props.home.num }</p>
+              
+                
+
             </div>
+
+            
         );
     }
 }
 
 export function mapStateToProps(store){
     return {
-        home: store.home
+        character: store.character,
+        app : store.app
     };
 }
 
-export default connect(mapStateToProps)(HomeComponent);
+export default connect(mapStateToProps)(CharacterGenerator);
