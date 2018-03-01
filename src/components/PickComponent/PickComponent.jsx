@@ -1,4 +1,4 @@
-mport React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Link } from 'react-router-dom';
 
@@ -17,9 +17,9 @@ class CharacterGenerator extends React.Component{
     handleNext(e) {
         const { dispatch } = this.props;
         dispatch({type:'TAKE_STEP', payload: {
-            step: 'STEP',
-            componentType: 'ClassComponent',
-            nextOptions: ['options'] 
+            step: this.props.nextStep,
+            componentType: this.props.nextType,
+            nextOptions: this.props.nextOptions 
             } 
         });
     }
@@ -28,9 +28,11 @@ class CharacterGenerator extends React.Component{
         
         return(
             <div>
-                <button type='button' value={this.props.app.nextOptions[0]} onClick={this.handleChoice}>{this.props.app.nextOptions[0]}</button>
-                <button type='button' value={this.props.app.nextOptions[1]} onClick={this.handleChoice}>{this.props.app.nextOptions[1]}</button>
-                <button type='button' onClick={this.handleNext}>Next</button>
+                <h3> { this.props.question || 'Question missing' } </h3>
+                {this.props.app.nextOptions.map(option => { 
+                    return <button type='button' value={option} onClick={this.handleChoice}>{option}</button> 
+                    }
+                )}
             </div>
         );
     }
