@@ -13,7 +13,7 @@ class Welcome extends React.Component{
         dispatch({type:'TAKE_STEP', payload: {
             step: 'RACE',
             componentType: 'PICK',
-            options: ['Human', 'Elf']
+            nextOptions: ['Human', 'Elf']
             } 
         });
     }

@@ -11,10 +11,7 @@ class CharacterGenerator extends React.Component{
 
     handleChoice(e) {
         const { dispatch } = this.props;
-        dispatch({type: 'EDIT_CHARACTER', payload: {
-                : e.target.value
-            }
-        });
+        dispatch({type: `UPDATE_${this.props.app.step}`, payload: e.target.value});
     }
 
     handleNext(e) {
@@ -22,7 +19,7 @@ class CharacterGenerator extends React.Component{
         dispatch({type:'TAKE_STEP', payload: {
             step: 'STEP',
             componentType: 'ClassComponent',
-            options: ['options'] 
+            nextOptions: ['options'] 
             } 
         });
     }
@@ -31,8 +28,8 @@ class CharacterGenerator extends React.Component{
         
         return(
             <div>
-                <button type='button' value={this.props.app.options[0]} onClick={this.handleChoice}>{this.props.app.options[0]}</button>
-                <button type='button' value={this.props.app.options[1]} onClick={this.handleChoice}>{this.props.app.options[1]}</button>
+                <button type='button' value={this.props.app.nextOptions[0]} onClick={this.handleChoice}>{this.props.app.nextOptions[0]}</button>
+                <button type='button' value={this.props.app.nextOptions[1]} onClick={this.handleChoice}>{this.props.app.nextOptions[1]}</button>
                 <button type='button' onClick={this.handleNext}>Next</button>
             </div>
         );

@@ -14,19 +14,11 @@ class CharacterGenerator extends React.Component{
     }
 
     render(){
-<<<<<<< HEAD
-        
-        return(
-            <div>
-                
-            </div>
-=======
 
         return(
     
             <TextComponent />
-            
->>>>>>> master
+        
         );
     }
 }

@@ -1,7 +1,7 @@
 const initialState ={
     step: 'WELCOME',
-    options: [],
-    componentType: 'Welcome'
+    componentType: 'Welcome',
+    nextOptions: []
 }
 
 export default function CharacterGenerator(store = initialState, action){
