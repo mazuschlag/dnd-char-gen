@@ -5,18 +5,27 @@ import { Router, Link } from 'react-router-dom';
 class HomeComponent extends React.Component{
     constructor(props){
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        const { dispatch } = this.props;
+        dispatch({type: 'ADD_ONE', payload: 1});
     }
 
     render(){
         return(
-            <h2>Hello World!</h2>
+            <div>
+                <button type="button" onClick={ this.handleClick }>Increase</button>
+                <p>{ this.props.home.num }</p>
+            </div>
         );
     }
 }
 
 export function mapStateToProps(store){
     return {
-        store: store.home
+        home: store.home
     };
 }
 
