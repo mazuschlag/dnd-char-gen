@@ -1,23 +1,32 @@
 const initialState ={
-    string: 'test',
-    num: 0
+    name: '',
+    class: '',
+    race: ''
 }
 
 export default function CharacterGenerator(store = initialState, action){
     const {type, payload} = action;
 
     switch(type){
-        case 'TEST' : {
+
+        case 'UPDATE_CLASS' : {
             return {
                 ...store,
-                new: payload
+                class: payload
             };
         }
 
-        case 'ADD_ONE' : {
+        case 'UPDATE_RACE' : {
             return {
                 ...store,
-                num: store.num + payload
+                race: payload
+            };
+        }
+
+        case 'UPDATE_NAME' : {
+            return {
+                ...store,
+                name: payload
             };
         }
 
