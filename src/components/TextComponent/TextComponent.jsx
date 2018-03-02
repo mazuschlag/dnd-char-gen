@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Link } from 'react-router-dom';
 
-class TextComponent extends React.Component{
+class TextComponent extends React.Component {
     constructor(props){
         super(props);
         
@@ -13,7 +13,7 @@ class TextComponent extends React.Component{
 
     handleClick(e) {
         const { dispatch } = this.props;
-        dispatch({type:'TAKE_STEP', payload: {step:this.props.next, componentType: this.props.nextType } });
+        dispatch({type:'TAKE_STEP', payload: {step:this.props.nextStep, componentType: this.props.nextType } });
         
     }
 

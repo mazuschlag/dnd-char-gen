@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Link } from 'react-router-dom';
 
-class CharacterGenerator extends React.Component{
+class CharacterGenerator extends React.Component {
     constructor(props){
         super(props);
         this.handleChoice = this.handleChoice.bind(this);
@@ -24,7 +24,6 @@ class CharacterGenerator extends React.Component{
     }
 
     render(){
-        console.log(this.props.question);
         return(
             <div>
                 <h3> { this.props.question || 'Question missing' } </h3>

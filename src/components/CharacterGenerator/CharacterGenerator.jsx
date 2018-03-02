@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Router, Link } from "react-router-dom";
+import WelcomeComponent from "../WelcomeComponent/WelcomeComponent";
 import TextComponent from "../TextComponent/TextComponent";
 import PickComponent from "../PickComponent/PickComponent";
+import EndComponent from "../EndComponent/EndComponent";
 import dictionary from "../../dictionary.js";
 
 class CharacterGenerator extends React.Component {
@@ -12,19 +14,32 @@ class CharacterGenerator extends React.Component {
   }
 
   createComponent(type, props) {
-    return type == "PICK" ? (
-      <PickComponent
-        question={props.question}
-        options={props.options}
-        nextStep={props.nextStep}
-        nextType={props.nextType}
-      />
-    ) : (
-      <TextComponent question={props.question} nextStep={props.nextStep} nextType={props.nextType} />
-    );
+    let toRender;
+    switch(type) {
+        case 'PICK':
+            toRender = <PickComponent
+                            question={props.question}
+                            options={props.options}
+                            nextStep={props.nextStep}
+                            nextType={props.nextType}
+                        />
+            break;
+        case 'TEXT':
+            toRender = <TextComponent question={props.question} nextStep={props.nextStep} nextType={props.nextType}/>
+            break;
+        case 'END':
+            toRender = <EndComponent question={props.question} nextStep={props.nextStep} nextType={props.nextType}/>
+            break;
+        default:
+            toRender = <WelcomeComponent question={props.question} nextStep={props.nextStep} nextType={props.nextType}/>
+            break;
+        
+    }
+    return toRender;
   }
 
   render() {
+    console.log(dictionary.nextComponent);
     const childProps = {
       question: dictionary.charQuestions[this.props.app.step],
       options: dictionary.charOptions[this.props.app.step],
