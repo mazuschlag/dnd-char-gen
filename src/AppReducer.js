@@ -1,7 +1,6 @@
 const initialState ={
     step: 'RACE',
-    componentType: 'Pick',
-    nextOptions: ['Human', 'Elf']
+    componentType: 'PICK',
 }
 
 export default function CharacterGenerator(store = initialState, action){

@@ -18,21 +18,24 @@ class CharacterGenerator extends React.Component{
         const { dispatch } = this.props;
         dispatch({type:'TAKE_STEP', payload: {
             step: this.props.nextStep,
-            componentType: this.props.nextType,
-            nextOptions: this.props.nextOptions 
+            componentType: this.props.nextType, 
             } 
         });
     }
 
     render(){
-        
+        console.log(this.props.question);
         return(
             <div>
                 <h3> { this.props.question || 'Question missing' } </h3>
-                {this.props.app.nextOptions.map(option => { 
+                {this.props.options.map(option => { 
                     return <button type='button' value={option} onClick={this.handleChoice}>{option}</button> 
                     }
                 )}
+                <br/>
+                <button onClick={this.handleNext}>
+                    Next
+                </button>
             </div>
         );
     }
