@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Router, Link } from 'react-router-dom';
 
 class TextComponent extends React.Component {
     constructor(props){
