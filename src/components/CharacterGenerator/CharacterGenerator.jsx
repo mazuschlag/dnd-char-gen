@@ -39,7 +39,6 @@ class CharacterGenerator extends React.Component {
   }
 
   render() {
-    console.log(dictionary.nextComponent);
     const childProps = {
       question: dictionary.charQuestions[this.props.app.step],
       options: dictionary.charOptions[this.props.app.step],

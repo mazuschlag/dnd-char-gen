@@ -1,7 +1,8 @@
 const initialState = {
     name: '',
     class: '',
-    race: ''
+    race: '',
+    background: ''
 }
 
 export default function CharacterGenerator(store = initialState, action){
@@ -21,6 +22,13 @@ export default function CharacterGenerator(store = initialState, action){
                 ...store,
                 race: payload
             };
+        }
+
+        case 'UPDATE_BACKGROUND' : {
+            return {
+                ...store,
+                background: payload
+            }
         }
 
         case 'UPDATE_NAME' : {
