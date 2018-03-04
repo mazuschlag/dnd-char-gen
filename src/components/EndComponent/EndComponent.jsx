@@ -21,10 +21,13 @@ class EndComponent extends React.Component {
         return(
             <div>
                 <h1>{this.props.question}</h1>
-                <p>{this.props.character.name}</p>
-                <p>{this.props.character.race}</p>
-                <p>{this.props.character.class}</p>
-                <p>{this.props.character.background}</p>
+                <p>{this.props.character.name}, a {this.props.character.race} {this.props.character.class} {this.props.character.background}</p>
+                <p>Strength: {this.props.character.abilityScores.str}</p>
+                <p>Dexterity: {this.props.character.abilityScores.dex}</p>
+                <p>Constitution: {this.props.character.abilityScores.const}</p>
+                <p>Intelligence: {this.props.character.abilityScores.int}</p>
+                <p>Wisdom: {this.props.character.abilityScores.wis}</p>
+                <p>Charisma: {this.props.character.abilityScores.char}</p>
                 <button type="button" onClick={ this.handleClick }>Restart</button>
             </div>
         );

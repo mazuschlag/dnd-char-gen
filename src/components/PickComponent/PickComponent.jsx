@@ -54,9 +54,7 @@ class CharacterGenerator extends React.Component {
                         }
                     )}
                 </div>
-                <button onClick={this.handleNext}>
-                    Next
-                </button>
+                <button onClick={this.handleNext}>Next</button>
             </div>
         );
     }

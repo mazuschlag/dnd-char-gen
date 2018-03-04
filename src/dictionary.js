@@ -3,6 +3,7 @@ export default {
         WELCOME: "Welcome to DnD Character Generator!",
         RACE: "What is the race of your character?",
         CLASS: "What is the class of your character?",
+        ABILITY: "What are the ability scores of your character?",
         BACKGROUND: "What is the background of your character?",
         NAME: "What is the name of your character?",
         END: "Congratulations! Here is your character:"
@@ -80,13 +81,15 @@ export default {
             info: "This is the info for a Soldier"}, 
             {name: "Urchin",
             info: "This is the info for an Urchin"}],
+        ABILITY: [],
         NAME: [],
         END: []
     },
     nextComponent:{
         WELCOME: {step: 'RACE', type: 'PICK'},
         RACE: {step: 'CLASS', type: 'PICK'},
-        CLASS: {step: 'BACKGROUND', type: 'PICK'},
+        CLASS: {step: 'ABILITY', type: 'ABILITY'},
+        ABILITY: {step: 'BACKGROUND', type: 'PICK'},
         BACKGROUND: {step: 'NAME', type: 'TEXT'},
         NAME: {step: 'END', type: 'END'},
         END: {step: 'WELCOME', type: 'WELCOME'}

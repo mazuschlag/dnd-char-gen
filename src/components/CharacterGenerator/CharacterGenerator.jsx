@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Router, Link } from "react-router-dom";
 import WelcomeComponent from "../WelcomeComponent/WelcomeComponent";
-import TextComponent from "../TextComponent/TextComponent";
 import PickComponent from "../PickComponent/PickComponent";
+import AbilityScores from '../AbilityScoreComponent/AbilityScoreComponent';
+import TextComponent from "../TextComponent/TextComponent";
 import EndComponent from "../EndComponent/EndComponent";
 import dictionary from "../../dictionary.js";
 
@@ -23,6 +24,9 @@ class CharacterGenerator extends React.Component {
                             nextStep={props.nextStep}
                             nextType={props.nextType}
                         />
+            break;
+        case 'ABILITY':
+            toRender = <AbilityScores question={props.question} nextStep={props.nextStep} nextType={props.nextType}/>
             break;
         case 'TEXT':
             toRender = <TextComponent question={props.question} nextStep={props.nextStep} nextType={props.nextType}/>
