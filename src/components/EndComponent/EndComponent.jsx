@@ -24,11 +24,9 @@ class EndComponent extends React.Component {
                 <p>{this.props.character.name}</p>
                 <p>{this.props.character.race}</p>
                 <p>{this.props.character.class}</p>
-                <button type="button" onClick={ this.handleClick }>Restart</button>       
-
+                <p>{this.props.character.background}</p>
+                <button type="button" onClick={ this.handleClick }>Restart</button>
             </div>
-
-            
         );
     }
 }
