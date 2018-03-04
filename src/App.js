@@ -8,7 +8,7 @@ import AbilityScores from './components/AbilityScoreComponent/AbilityScoreCompon
 class App extends Component {
   render() {
     return (
-      <AbilityScores />
+      <CharacterGenerator />
     );
   }
 }
