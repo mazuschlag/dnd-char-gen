@@ -34,6 +34,20 @@ class AbilityScores extends React.Component {
 
   handleNext(e) {
     const { dispatch } = this.props;
+
+    if (this.props.character.class === "Cleric" || "Rogue") {
+      let constModifier = Math.floor((this.props.character.abilityScores.const/2) -5);
+    dispatch({type:'UPDATE_HEALTH', payload:{hitPoints: constModifier + 8}});
+    } 
+    else if (this.props.character.class === "Fighter") {
+      let constModifier = Math.floor((this.props.character.abilityScores.const/2) -5);
+    dispatch({type:'UPDATE_HEALTH', payload:{hitPoints: constModifier + 10}});
+    } 
+    else {
+      let constModifier = Math.floor((this.props.character.abilityScores.const/2) -5);
+    dispatch({type:'UPDATE_HEALTH', payload:{hitPoints: constModifier + 6}});
+    }
+
     dispatch({
       type: "TAKE_STEP",
       payload: {
@@ -97,19 +111,19 @@ class AbilityScores extends React.Component {
   }
 
   handleReset() {
+    const { dispatch } = this.props;
+
     this.setState({
-      str: "",
-      dex: "",
-      const: "",
-      int: "",
-      wis: "",
-      char: "",
       firstDraggable: true,
       secondDraggable: true,
       thirdDraggable: true,
       fourthDraggable: true,
       fifthDraggable: true,
       sixthDraggable: true
+    });
+    dispatch({
+      type: `RESET_ABILITY_SCORES`,
+      payload: null
     });
   }
 
@@ -167,27 +181,27 @@ class AbilityScores extends React.Component {
           <div style={{ display: "inline-block", width: "50%" }}>
             <ul style={{ listStyle: "none" }}>
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="str">
-                Strength {this.state.str}
+                Strength {this.props.character.abilityScores.str}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="dex">
-                Dexterity {this.state.dex}
+                Dexterity {this.props.character.abilityScores.dex}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="const">
-                Constitution {this.state.const}
+                Constitution {this.props.character.abilityScores.const}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="int">
-                Intelligence {this.state.int}
+                Intelligence {this.props.character.abilityScores.int}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="wis">
-                Wisdom {this.state.wis}
+                Wisdom {this.props.character.abilityScores.wis}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="char">
-                Charisma {this.state.char}
+                Charisma {this.props.character.abilityScores.char}
               </li>
             </ul>
           </div>
@@ -202,7 +216,7 @@ class AbilityScores extends React.Component {
           <div id="scores" style={{ display: "inline-block", width: "50%" }}>
             <ul style={{ listStyle: "none" }}>
               <li
-              id="first"
+                id="first"
                 draggable={this.state.firstDraggable}
                 onDragStart={this.dragstart_handler}
                 value={this.state.randomScore1}
@@ -211,7 +225,7 @@ class AbilityScores extends React.Component {
               </li>
               <br />
               <li
-              id="second"
+                id="second"
                 draggable={this.state.secondDraggable}
                 onDragStart={this.dragstart_handler}
                 value={this.state.randomScore2}
@@ -220,7 +234,7 @@ class AbilityScores extends React.Component {
               </li>
               <br />
               <li
-              id="third"
+                id="third"
                 draggable={this.state.thirdDraggable}
                 onDragStart={this.dragstart_handler}
                 value={this.state.randomScore3}
@@ -229,7 +243,7 @@ class AbilityScores extends React.Component {
               </li>
               <br />
               <li
-              id="fourth"
+                id="fourth"
                 draggable={this.state.fourthDraggable}
                 onDragStart={this.dragstart_handler}
                 value={this.state.randomScore4}
@@ -238,7 +252,7 @@ class AbilityScores extends React.Component {
               </li>
               <br />
               <li
-              id="fifth"
+                id="fifth"
                 draggable={this.state.fifthDraggable}
                 onDragStart={this.dragstart_handler}
                 value={this.state.randomScore5}
@@ -247,7 +261,7 @@ class AbilityScores extends React.Component {
               </li>
               <br />
               <li
-              id="sixth"
+                id="sixth"
                 draggable={this.state.sixthDraggable}
                 onDragStart={this.dragstart_handler}
                 value={this.state.randomScore6}
@@ -259,27 +273,27 @@ class AbilityScores extends React.Component {
           <div style={{ display: "inline-block", width: "50%" }}>
             <ul style={{ listStyle: "none" }}>
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="str">
-                Strength {this.state.str}
+                Strength {this.props.character.abilityScores.str}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="dex">
-                Dexterity {this.state.dex}
+                Dexterity {this.props.character.abilityScores.dex}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="const">
-                Constitution {this.state.const}
+                Constitution {this.props.character.abilityScores.const}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="int">
-                Intelligence {this.state.int}
+                Intelligence {this.props.character.abilityScores.int}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="wis">
-                Wisdom {this.state.wis}
+                Wisdom {this.props.character.abilityScores.wis}
               </li>
               <br />
               <li onDrop={this.drop_handler} onDragOver={this.dragover_handler} id="char">
-                Charisma {this.state.char}
+                Charisma {this.props.character.abilityScores.char}
               </li>
             </ul>
           </div>
@@ -315,7 +329,11 @@ class AbilityScores extends React.Component {
         ) : (
           <div> Select above to see scores </div>
         )}
+
         <button onClick={this.handleReset}>Reassign Scores</button>
+        <br/>
+        <br/>
+
         <button onClick={this.handleNext}> Next</button>
       </div>
     );

@@ -40,6 +40,20 @@ export default function CharacterGenerator(store = initialState, action){
             }
         }
 
+        case 'RESET_ABILITY_SCORES' : {
+            return {
+                ...store,
+                abilityScores: {
+                    str: '',
+                    dex: '',
+                    const: '',
+                    int: '',
+                    wis: '',
+                    char: ''
+                }
+            }
+        }
+
         case 'UPDATE_BACKGROUND' : {
             return {
                 ...store,
@@ -53,6 +67,15 @@ export default function CharacterGenerator(store = initialState, action){
                 name: payload
             };
         }
+
+        case 'UPDATE_HEALTH' : {
+            return {
+                ...store,
+                health: payload.hitPoints
+            };
+        }
+
+
 
         default: {
             return store;
