@@ -26,19 +26,14 @@ class CharacterGenerator extends React.Component {
 
     buildCard(option) {
         return(
-            <div className='card sticky-action' id='info-card'>
-                <div className='card-image waves-effect waves-block waves-light'>
-                     <img className='activator' src='assets/ILLDOITFORYOU.png'/> 
-                </div>
-                <div className='card-content'>
-                    <span className='card-title activator grey-text text-darken-4'>{option.name}<i className='material-icons right'>more_vert</i></span>
-                </div>
-                <div className='card-reveal'>
-                    <span className='card-title grey-text text-darken-4'>{option.name}<i className='material-icons right'>close</i></span>
-                    <p>{option.info}</p>
-                </div>
-                <div className='card-action'> 
-                    <button type='button' value={option.name} onClick={this.handleChoice}>OK!</button>
+            <div className="info-card" key={option.name}>
+                <div className="card">
+                    <img className="card-img-top" src="assets/ILLDOITFORYOU.png" alt={option.name}/>
+                    <div className="card-body">
+                    <h5 className="card-title">{option.name}</h5>
+                    <p className="card-text">{option.info}</p>
+                    <button className="btn btn-primary" value={option.name} onClick={this.handleChoice}>OK!</button>
+                  </div>
                 </div>
             </div>
         ) 
@@ -48,7 +43,7 @@ class CharacterGenerator extends React.Component {
         return(
             <div>
                 <h3> { this.props.question || 'Question missing' } </h3>
-                <div className='info-cards'>
+                <div className='info-cards-holder'>
                     {this.props.options.map(option => { 
                         return this.buildCard(option);
                         }

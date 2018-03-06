@@ -1,9 +1,9 @@
-.info-cards {
+.info-cards-holder {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
 }
 
-#info-card {
+.info-card {
 	width: 20%;
 }

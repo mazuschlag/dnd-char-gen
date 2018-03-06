@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Router, Link } from "react-router-dom";
 import WelcomeComponent from "../WelcomeComponent/WelcomeComponent";
 import PickComponent from "../PickComponent/PickComponent";
 import AbilityScores from '../AbilityScoreComponent/AbilityScoreComponent';
