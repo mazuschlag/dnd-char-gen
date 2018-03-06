@@ -27,7 +27,7 @@ class EndComponent extends React.Component {
                 <p>Intelligence: {this.props.character.abilityScores.int}</p>
                 <p>Wisdom: {this.props.character.abilityScores.wis}</p>
                 <p>Charisma: {this.props.character.abilityScores.char}</p>
-                <p>Health: {this.props.character.health}</p>
+                <p>Max Hitpoints: {this.props.character.health}</p>
                 
 
                 <button type="button" onClick={ this.handleClick }>Restart</button>
