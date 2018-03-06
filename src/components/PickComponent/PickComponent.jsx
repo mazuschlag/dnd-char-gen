@@ -29,12 +29,11 @@ class PickComponent extends React.Component {
             componentType: this.props.nextType, 
             } 
         });
+        this.setState({showDetails: false, toShow: {}});
     }
 
-    handleShowDetails(e) {
-        e.preventDefault();
-        console.log(e.target.value);
-        this.setState({showDetails: true, toShow: {}});
+    handleShowDetails(option) {
+        this.setState({showDetails: true, toShow: option});
     }
 
     handleHideDetails(e) {
@@ -44,14 +43,14 @@ class PickComponent extends React.Component {
 
     buildCard(option) {
         return(
-            <div className="info-card" onClick={this.handleShowDetails} key={option.name}>
+            <div className="info-card" key={option.name}>
                 <div className="card">
-                    <img className="card-img-top" src="assets/ILLDOITFORYOU.png" alt={option.name}/>
+                    <img className="card-img-top" src="assets/ILLDOITFORYOU.png" alt={option.name} onClick={() => this.handleShowDetails(option)}/>
                     <div className="card-body">
-                    <h5 className="card-title">{option.name}</h5>
-                    <p className="card-text">{option.sub}</p>
-                    <button type="button" className="btn btn-primary" value={option.name} onClick={this.handleChoice}>OK!</button>
-                  </div>
+                        <h5 className="card-title" onClick={() => this.handleShowDetails(option)}>{option.name}</h5>
+                        <p className="card-text" onClick={() => this.handleShowDetails(option)}>{option.sub}</p>
+                        <button type="button" className="btn btn-primary" value={option.name} onClick={this.handleChoice}>OK!</button>
+                    </div>
                 </div>
             </div>
         ) 
