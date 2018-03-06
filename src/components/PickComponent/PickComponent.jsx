@@ -1,13 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import DetailsComponent from '../DetailsComponent/DetailsComponent';
 import '../../index.css';
 
-class CharacterGenerator extends React.Component {
+class PickComponent extends React.Component {
     constructor(props){
         super(props);
         this.handleChoice = this.handleChoice.bind(this);
         this.handleNext = this.handleNext.bind(this);
         this.buildCard = this.buildCard.bind(this);
+        this.handleShowDetails = this.handleShowDetails.bind(this);
+        this.handleHideDetails = this.handleHideDetails.bind(this);
+        this.state = {
+            showDetails: false,
+            toShow: {}
+        };
     }
 
     handleChoice(e) {
@@ -24,15 +31,26 @@ class CharacterGenerator extends React.Component {
         });
     }
 
+    handleShowDetails(e) {
+        e.preventDefault();
+        console.log(e.target.value);
+        this.setState({showDetails: true, toShow: {}});
+    }
+
+    handleHideDetails(e) {
+        e.preventDefault();
+        this.setState({showDetails: false, toShow: {}});
+    }
+
     buildCard(option) {
         return(
-            <div className="info-card" key={option.name}>
+            <div className="info-card" onClick={this.handleShowDetails} key={option.name}>
                 <div className="card">
                     <img className="card-img-top" src="assets/ILLDOITFORYOU.png" alt={option.name}/>
                     <div className="card-body">
                     <h5 className="card-title">{option.name}</h5>
-                    <p className="card-text">{option.info}</p>
-                    <button className="btn btn-primary" value={option.name} onClick={this.handleChoice}>OK!</button>
+                    <p className="card-text">{option.sub}</p>
+                    <button type="button" className="btn btn-primary" value={option.name} onClick={this.handleChoice}>OK!</button>
                   </div>
                 </div>
             </div>
@@ -40,16 +58,23 @@ class CharacterGenerator extends React.Component {
     }
 
     render(){
-        return(
-            <div>
-                <h3> { this.props.question || 'Question missing' } </h3>
-                <div className='info-cards-holder'>
+        console.log(this.props);
+        let currentComponent;
+        if (!this.state.showDetails) {
+            currentComponent = (<div className='info-cards-holder'>
                     {this.props.options.map(option => { 
                         return this.buildCard(option);
                         }
                     )}
-                </div>
-                <button onClick={this.handleNext}>Next</button>
+                    </div>);
+        } else {
+            currentComponent = <DetailsComponent details={this.state.toShow} handleHide={this.handleHideDetails}/>
+        }
+        return(
+            <div>
+                <h3> { this.props.question || 'Question missing' } </h3>
+                {currentComponent}
+                <button type='button' className='btn btn-primary' onClick={this.handleNext}>Next</button>
             </div>
         );
     }
@@ -62,4 +87,4 @@ export function mapStateToProps(store){
     };
 }
 
-export default connect(mapStateToProps)(CharacterGenerator);
+export default connect(mapStateToProps)(PickComponent);
